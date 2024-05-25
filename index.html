@@ -38,14 +38,20 @@
         document.getElementById("response").textContent = text;
       } catch (error) {
         console.error("Error generating response:", error);
+        if (error.message.includes("Rate limit exceeded")) {
+          document.getElementById("response").textContent = "Sorry, the API rate limit has been exceeded. Please try again later.";
+        } else {
+          document.getElementById("response").textContent = "An error occurred while generating the response. Please try again later.";
+        }
       }
     }
 
-    
     const urlParams = new URLSearchParams(window.location.search);
     const message = urlParams.get("a");
     if (message) {
       handleRequest(message);
+    } else {
+      document.getElementById("response").textContent = "No message provided.";
     }
   </script>
 </body>
