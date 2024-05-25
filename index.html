@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Roblox Talking AI</title>
+</head>
+<body>
+  <h1 id="response"></h1>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "@google/generative-ai": "https://esm.run/@google/generative-ai"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import { GoogleGenerativeAI } from "@google/generative-ai";
+
+    // Replace with your actual API key
+    const API_KEY = "AIzaSyAU1EhbOjUJYWmTBCivj0XUjE5og_8mfXU";
+
+    const genAI = new GoogleGenerativeAI(API_KEY);
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+    async function handleRequest(message) {
+      try {
+        const result = await model.generateContent(message);
+        const response = await result.response;
+        const text = response.text();
+        document.getElementById("response").textContent = text;
+      } catch (error) {
+        console.error("Error generating response:", error);
+      }
+    }
+
+    // Example usage: Handle the HTTP request from Roblox
+    const urlParams = new URLSearchParams(window.location.search);
+    const message = urlParams.get("a");
+    if (message) {
+      handleRequest(message);
+    }
+  </script>
+</body>
+</html>
