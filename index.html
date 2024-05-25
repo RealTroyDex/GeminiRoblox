@@ -17,7 +17,7 @@
   <script type="module">
     import { GoogleGenerativeAI } from "@google/generative-ai";
 
-    // Replace with your actual API key
+    // key
     const API_KEY = "AIzaSyAU1EhbOjUJYWmTBCivj0XUjE5og_8mfXU";
 
     const genAI = new GoogleGenerativeAI(API_KEY);
@@ -34,7 +34,7 @@
       }
     }
 
-    // Example usage: Handle the HTTP request from Roblox
+    
     const urlParams = new URLSearchParams(window.location.search);
     const message = urlParams.get("a");
     if (message) {
