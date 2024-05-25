@@ -21,7 +21,7 @@
       try {
         const secretResponse = await fetch("https://api.github.com/repos/RealTroyDex/GeminiRoblox/actions/secrets/SECRET", {
           headers: {
-            "Authorization": "Bearer " + process.env.GITHUB_TOKEN
+            "Authorization": "Bearer " + process.env.TOKEN
           }
         });
         if (!secretResponse.ok) {
